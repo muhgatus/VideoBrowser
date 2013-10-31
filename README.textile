@@ -1,0 +1,77 @@
+h1. VideoBrowser
+
+This web frontend displays recodings in a configurated folder and its
+subfolders. You can watch them via drag&drop to vlc. You can also
+manage your videofiles by deleting them. You can sort them by name,
+modification time or size. You can also select more than one file 
+and generate a playlist on the fly.
+
+h2. Versions
+
+h3. 0.1 - Initial version
+
+* initial version with all basic files
+
+h2. Dependencies
+
+* "Flask":http://flask.pocoo.org/
+* "jquery":http://jquery.com/
+* "jquery base64":https://github.com/carlo/jquery-base64
+
+h2. Recommendations
+
+* "Gunicorn":http://gunicorn.org/
+* "eventlet":http://eventlet.net/
+* "nginx":http://nginx.org/
+
+h2. Screenshot
+
+!https://raw.github.com/muhgatus/VideoBrowser/master/screenshot_001.jpg!
+
+h2. Installation
+
+You have to edit VideoBrowser.py in order to set the correct PATH to the
+video files and the KEY. The KEY is used to sign delete requests. This
+increases the security a little bit, if you like to run this front end
+without any kind of authentication.
+
+You may also edit the HTML variable and set the correct urls for the
+Javascript and CSS files.
+
+<pre>PATH='/recordings/hts'
+KEY='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+
+HTML="""<html>
+ <head>
+  <title>Videobrowser</title>
+  <link rel="stylesheet" type="text/css" href="/VideoBrowser.css">
+  <script src="/jquery-2.0.3.min.js"></script>
+  <script src="/jquery.base64.min.js"></script>
+  <script src="/VideoBrowser.js"></script>
+ </head>
+ <body>
+{0}
+ </body>
+</html>
+"""
+</pre>
+
+I like to recommend that you use gunicorn and nginx to run this web frontend,
+but feel free to use another way. Perhabs you might wanna share your
+approach with me and I will try to add your configuration stubs to this
+repository.
+
+h2. License
+
+VideoBrowser is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+VideoBrowser is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with VideoBrowser.  If not, see <http://www.gnu.org/licenses/>.
